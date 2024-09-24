@@ -1,6 +1,7 @@
 # gitprint
 
 Flow:
+
 - Sign in with Github
 - Enter a public repo URL
 - Or select a private repo you have access to
@@ -13,5 +14,9 @@ Flow:
 - Let user configure the export
 - Apply order
   - README.md
-- Generate PDF file
+  - root folder
+  - chapter per folder
+- Generate HTML file
+  - apply syntax highlighting
+- Generate PDF file from HTML file - https://gotenberg.dev/docs/routes#html-file-into-pdf-route
 - Create a secure downloadable link
