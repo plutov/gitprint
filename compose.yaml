@@ -11,8 +11,10 @@ services:
       - GITHUB_CLIENT_ID=Ov23liNqJR9Ysv2Q967f
       - GITHUB_CLIENT_SECRET=da0cc01edf3043a3a11e806ff5dbfb9df80feb1a
       - GITHUB_REDIRECT_HOST=http://localhost:9701
+      - GITHUB_REPOS_DIR=/root/repos
     volumes:
       - ./api/gitprint.db:/root/gitprint.db
+      - ./api/repos:/root/repos
 
   ui:
     restart: always

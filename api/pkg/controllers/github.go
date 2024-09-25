@@ -34,5 +34,8 @@ func (h *Handler) githubCallback(c echo.Context) error {
 	repos, _ = ghClient.GetOrgRepos("12traits")
 	fmt.Println(repos)
 
+	res, _ := ghClient.DownloadRepo("plutov", "formulosity", "main")
+	fmt.Println(res)
+
 	return response.Ok(c, token)
 }

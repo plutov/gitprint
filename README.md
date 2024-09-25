@@ -20,3 +20,7 @@ Flow:
   - apply syntax highlighting
 - Generate PDF file from HTML file - https://gotenberg.dev/docs/routes#html-file-into-pdf-route
 - Create a secure downloadable link
+
+Download repo contents flow:
+
+- Downlaod all contents of the repo into owner/repo/ref/...
