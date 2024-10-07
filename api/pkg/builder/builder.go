@@ -23,6 +23,7 @@ type ContentMeta struct {
 	ForksCount      int    `json:"forksCount"`
 	StargazersCount int    `json:"stargazersCount"`
 	License         string `json:"license"`
+	CommitSHA       string `json:"commitSHA"`
 }
 
 type Contributor struct {
@@ -55,7 +56,7 @@ type Document struct {
 	Nodes []DocumentNode
 }
 
-func GenerateDocument(repo *github.Repository, contributors []*github.Contributor, outputDir string) (*Document, error) {
+func GenerateDocument(repo *github.Repository, contributors []*github.Contributor, commitSHA string, outputDir string) (*Document, error) {
 	logCtx := log.With("repo", repo.GetFullName(), "outputDir", outputDir)
 	logCtx.Info("generating document")
 
@@ -71,6 +72,7 @@ func GenerateDocument(repo *github.Repository, contributors []*github.Contributo
 			ForksCount:      repo.GetForksCount(),
 			StargazersCount: repo.GetStargazersCount(),
 			License:         repo.GetLicense().GetName(),
+			CommitSHA:       commitSHA,
 		},
 	})
 

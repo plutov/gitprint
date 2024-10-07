@@ -96,7 +96,12 @@ func (h *Handler) generate(c echo.Context) error {
 		return response.InternalError(c, "unable to get repo contributors")
 	}
 
-	doc, err := builder.GenerateDocument(repository, contributors, outputDir)
+	commitSHA, err := ghClient.GetLatestCommitSHA(owner, repo)
+	if err != nil {
+		return response.InternalError(c, "unable to get last commit SHA")
+	}
+
+	doc, err := builder.GenerateDocument(repository, contributors, commitSHA, outputDir)
 	if err != nil {
 		return response.InternalError(c, "unable to generate document")
 	}

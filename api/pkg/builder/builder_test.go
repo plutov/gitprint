@@ -39,7 +39,7 @@ func TestGenerateDocument(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.outputDir, func(t *testing.T) {
-			doc, err := GenerateDocument(tt.repository, tt.contributors, tt.outputDir)
+			doc, err := GenerateDocument(tt.repository, tt.contributors, "a4d5gq", tt.outputDir)
 			if tt.isNilErr && err != nil {
 				t.Errorf("expecting nil error, got %v", err)
 			}
