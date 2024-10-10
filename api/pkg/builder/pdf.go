@@ -56,6 +56,7 @@ func GenerateAndSavePDFFile(htmlFile string, exportID string) (string, error) {
 		"marginLeft":      "0",
 		"marginRight":     "0",
 		"printBackground": "true",
+		"pageRanges":      "1-100",
 	}
 	for k, v := range fields {
 		if err := w.WriteField(k, v); err != nil {

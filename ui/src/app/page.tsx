@@ -52,9 +52,9 @@ export default function Home() {
               className="cursor-pointer rounded-md border p-4"
               href={`${process.env.NEXT_PUBLIC_API_URL}/files?export_id=&ext=pdf`}
             >
-              <div className="text-sm font-semibold">kubernetes/kubectl</div>
-              <div className="text-sm text-white">v0.30.5</div>
-              <div className="text-sm text-zinc-600">10.5MB</div>
+              <div className="text-sm font-semibold">astral-sh/ruff-lsp</div>
+              <div className="text-sm text-white">v0.0.57</div>
+              <div className="text-sm text-zinc-600">2.3MB</div>
             </a>
             <a
               className="cursor-pointer rounded-md border p-4"

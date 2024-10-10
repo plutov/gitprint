@@ -33,5 +33,7 @@ services:
   gotenberg:
     restart: always
     image: gotenberg/gotenberg:8
+    environment:
+      - DEFAULT_WAIT_TIMEOUT=30
     ports:
       - "9703:3000"
