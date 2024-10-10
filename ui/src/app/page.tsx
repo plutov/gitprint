@@ -42,7 +42,7 @@ export default function Home() {
           <div className="mb-4 grid grid-cols-2 gap-2">
             <a
               className="cursor-pointer rounded-md border p-4"
-              href={`${process.env.NEXT_PUBLIC_API_URL}/files?export_id=&ext=pdf`}
+              href={`${process.env.NEXT_PUBLIC_API_ADDR}/files?export_id=&ext=pdf`}
             >
               <div className="text-sm font-semibold">docker/scout-cli</div>
               <div className="text-sm text-white">v1.14.0</div>
@@ -50,7 +50,7 @@ export default function Home() {
             </a>
             <a
               className="cursor-pointer rounded-md border p-4"
-              href={`${process.env.NEXT_PUBLIC_API_URL}/files?export_id=&ext=pdf`}
+              href={`${process.env.NEXT_PUBLIC_API_ADDR}/files?export_id=&ext=pdf`}
             >
               <div className="text-sm font-semibold">astral-sh/ruff-lsp</div>
               <div className="text-sm text-white">v0.0.57</div>
@@ -58,7 +58,7 @@ export default function Home() {
             </a>
             <a
               className="cursor-pointer rounded-md border p-4"
-              href={`${process.env.NEXT_PUBLIC_API_URL}/files?export_id=&ext=pdf`}
+              href={`${process.env.NEXT_PUBLIC_API_ADDR}/files?export_id=&ext=pdf`}
             >
               <div className="text-sm font-semibold">binarly-io/efiXplorer</div>
               <div className="text-sm text-white">v6.0</div>
@@ -66,7 +66,7 @@ export default function Home() {
             </a>
             <a
               className="cursor-pointer rounded-md border p-4"
-              href={`${process.env.NEXT_PUBLIC_API_URL}/files?export_id=&ext=pdf`}
+              href={`${process.env.NEXT_PUBLIC_API_ADDR}/files?export_id=&ext=pdf`}
             >
               <div className="text-sm font-semibold">redis/redis-vl-python</div>
               <div className="text-sm text-white">v0.3.4</div>
