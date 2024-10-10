@@ -40,15 +40,37 @@ export default function Home() {
             </span>
           </div>
           <div className="mb-4 grid grid-cols-2 gap-2">
-            <a className="cursor-pointer rounded-md border p-4">
-              <div className="text-sm font-semibold">neovim/neovim</div>
-              <div className="text-sm text-white">v0.10.2</div>
-              <div className="text-sm text-zinc-600">115MB</div>
+            <a
+              className="cursor-pointer rounded-md border p-4"
+              href={`${process.env.NEXT_PUBLIC_API_URL}/files?export_id=&ext=pdf`}
+            >
+              <div className="text-sm font-semibold">docker/scout-cli</div>
+              <div className="text-sm text-white">v1.14.0</div>
+              <div className="text-sm text-zinc-600">2.4MB</div>
             </a>
-            <a className="cursor-pointer rounded-md border p-4">
-              <div className="text-sm font-semibold">oven-sh/bun</div>
-              <div className="text-sm text-white">v1.1.29</div>
-              <div className="text-sm text-zinc-600">69MB</div>
+            <a
+              className="cursor-pointer rounded-md border p-4"
+              href={`${process.env.NEXT_PUBLIC_API_URL}/files?export_id=&ext=pdf`}
+            >
+              <div className="text-sm font-semibold">kubernetes/kubectl</div>
+              <div className="text-sm text-white">v0.30.5</div>
+              <div className="text-sm text-zinc-600">10.5MB</div>
+            </a>
+            <a
+              className="cursor-pointer rounded-md border p-4"
+              href={`${process.env.NEXT_PUBLIC_API_URL}/files?export_id=&ext=pdf`}
+            >
+              <div className="text-sm font-semibold">binarly-io/efiXplorer</div>
+              <div className="text-sm text-white">v6.0</div>
+              <div className="text-sm text-zinc-600">1MB</div>
+            </a>
+            <a
+              className="cursor-pointer rounded-md border p-4"
+              href={`${process.env.NEXT_PUBLIC_API_URL}/files?export_id=&ext=pdf`}
+            >
+              <div className="text-sm font-semibold">redis/redis-vl-python</div>
+              <div className="text-sm text-white">v0.3.4</div>
+              <div className="text-sm text-zinc-600">2.5MB</div>
             </a>
           </div>
         </div>

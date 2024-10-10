@@ -44,7 +44,7 @@ type ContentChapter struct {
 }
 
 type ContentFile struct {
-	Content []byte `json:"content"`
+	Content string `json:"content"`
 }
 
 type DocumentNode struct {
@@ -122,11 +122,11 @@ func GenerateDocument(repo *github.Repository, contributors []*github.Contributo
 				title = "root"
 			} else {
 				subfoldersCount := strings.Count(path, string(os.PathSeparator))
-				if subfoldersCount == 1 {
+				if subfoldersCount == 0 {
 					versionMajor++
 					versionMinor = 0
 					versionPatch = 0
-				} else if subfoldersCount == 2 {
+				} else if subfoldersCount == 1 {
 					versionMinor++
 					versionPatch = 0
 				} else {
@@ -157,7 +157,7 @@ func GenerateDocument(repo *github.Repository, contributors []*github.Contributo
 				Type:  NodeTypeFile,
 				Title: path,
 				ContentFile: &ContentFile{
-					Content: f,
+					Content: string(f),
 				},
 			}
 

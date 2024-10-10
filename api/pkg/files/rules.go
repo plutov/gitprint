@@ -81,10 +81,14 @@ var (
 		"mocks",
 		"third_party",
 		"testdata",
+		"data",
+		"docs",
+		"doc",
 	}
 	blacklistPrefixes = []string{
 		// Everything that starts with a dot
 		".",
+		"_",
 	}
 )
 

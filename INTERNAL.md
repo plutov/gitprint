@@ -10,4 +10,10 @@
 Domain name: gitprint.me
 Github OAuth App: https://github.com/settings/applications/2718171
 
-## Deployment
+## Tech Stack
+
+- Go
+- Tailwind CSS
+- Gotenberg
+- Hetzner
+- Let's Encrypt

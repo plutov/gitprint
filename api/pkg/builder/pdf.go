@@ -26,7 +26,7 @@ func GenerateAndSavePDFFile(htmlFile string, exportID string) (string, error) {
 	}
 
 	httpClient := &http.Client{
-		Timeout: 30 * time.Second,
+		Timeout: 60 * time.Second,
 	}
 
 	var b bytes.Buffer
@@ -48,9 +48,20 @@ func GenerateAndSavePDFFile(htmlFile string, exportID string) (string, error) {
 		return "", err
 	}
 
-	if err := w.WriteField("waitDelay", "5s"); err != nil {
-		logCtx.WithError(err).Error("failed to write field")
-		return "", err
+	fields := map[string]string{
+		// TODO: adjust waitDelay
+		"waitDelay":       "1s",
+		"marginTop":       "10px",
+		"marginBottom":    "10px",
+		"marginLeft":      "0",
+		"marginRight":     "0",
+		"printBackground": "true",
+	}
+	for k, v := range fields {
+		if err := w.WriteField(k, v); err != nil {
+			logCtx.WithError(err).Error("failed to write field")
+			return "", err
+		}
 	}
 	w.Close()
 

@@ -9,14 +9,17 @@ export default function Docs() {
             <h1 className="text-lg font-semibold">
               {">"} Which files are printed?
             </h1>
-            <p className="py-2">
+            <p>
               To keep the size of the PDF small, only the whitelisted extensions
               are include. That includes programming languages, markup
-              languages, and some other common file types.
+              languages, and some other common file types. Files bigger than
+              100KB are not included in the PDF.
             </p>
-            <p className="py-2">
-              Files bigger than 100KB are not included in the PDF.
-            </p>
+          </div>
+          <div className="flex flex-col gap-2 rounded-md border p-8 mt-4">
+            <h1 className="text-lg font-semibold">{">"} Known Issues</h1>
+            <p>1. It may not work well on huge repositories.</p>
+            <p>2. No syntax highlighting.</p>
           </div>
         </div>
       </div>

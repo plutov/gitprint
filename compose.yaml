@@ -6,10 +6,14 @@ services:
     ports:
       - "9701:8080"
     environment:
+      - ENV=local
       - LOG_LEVEL=debug
       - JWT_SECRET=bullseye
+      # prod: Ov23liZEEiOWoR3XtAnt
       - GITHUB_CLIENT_ID=Ov23liNqJR9Ysv2Q967f
+      # prod: ff17f795e218054e8e42bd538566bdf0e181aab9
       - GITHUB_CLIENT_SECRET=da0cc01edf3043a3a11e806ff5dbfb9df80feb1a
+      # prod: https://gitprint.me
       - GITHUB_REDIRECT_HOST=http://localhost:9702
       - GITHUB_REPOS_DIR=/root/repos
       - GOTENBERG_ADDR=http://gotenberg:3000
@@ -21,6 +25,7 @@ services:
     build:
       context: ./ui
       args:
+        # prod: https://api.gitprint.me
         - NEXT_PUBLIC_API_ADDR=http://localhost:9701
     ports:
       - "9702:3000"
