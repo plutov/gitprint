@@ -19,7 +19,7 @@ func TestExtractAndFilterFiles(t *testing.T) {
 		t.Run(tt.path, func(t *testing.T) {
 			res, err := ExtractAndFilterFiles(tt.path)
 			if res != nil {
-				os.RemoveAll(res.outputDir)
+				os.RemoveAll(res.OutputDir)
 			}
 			if tt.isNilErr && err != nil {
 				t.Errorf("expecting nil error, got %v", err)

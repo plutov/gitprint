@@ -5,10 +5,18 @@ import (
 	"testing"
 
 	"github.com/google/go-github/v65/github"
+	"github.com/plutov/gitprint/api/pkg/files"
 )
 
 func TestGenerateDocument(t *testing.T) {
 	os.Setenv("GITHUB_REPOS_DIR", "./testdata")
+
+	res, err := files.ExtractAndFilterFiles("./testdata/formulosity-0.1.5.tar.gz")
+	if err != nil {
+		t.Fatalf("ExtractAndFilterFiles failed: %v", err)
+	}
+
+	defer os.RemoveAll(res.OutputDir)
 
 	repo := &github.Repository{
 		FullName:        github.String("testdata/testrepo"),
@@ -37,7 +45,7 @@ func TestGenerateDocument(t *testing.T) {
 		rootReadme    bool
 	}{
 		{repo, contributors, "notfound", false, 0, 0, false},
-		{repo, contributors, "testrepo", true, 19, 3, true},
+		{repo, contributors, res.ExportID, true, 130, 38, true},
 	}
 
 	for _, tt := range tests {

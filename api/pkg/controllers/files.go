@@ -12,8 +12,8 @@ func (h *Handler) downloadExportFile(c echo.Context) error {
 	exportID := c.QueryParam("export_id")
 	ext := c.QueryParam("ext")
 
-	if exportID == "" || ext == "" {
-		return response.BadRequest(c, "missing export_id or ext")
+	if err := files.ValidateExportID(exportID); err != nil {
+		return response.BadRequest(c, err.Error())
 	}
 
 	var path string

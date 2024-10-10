@@ -28,7 +28,7 @@ func GenerateHTML(w io.Writer, doc *Document, exportID string) error {
 	return nil
 }
 
-func GenerateAndSaveHTMLFile(doc *Document, exportID string) error {
+func GenerateAndSaveHTMLFile(doc *Document, exportID string) (string, error) {
 	logCtx := log.With("exportID", exportID)
 	logCtx.Info("saving html file")
 
@@ -36,20 +36,20 @@ func GenerateAndSaveHTMLFile(doc *Document, exportID string) error {
 
 	if err := os.MkdirAll(output, 0755); err != nil {
 		logCtx.WithError(err).Error("failed to create output directory")
-		return err
+		return "", err
 	}
 	o, err := os.Create(output)
 	if err != nil {
 		logCtx.WithError(err).Error("failed to create output file")
-		return err
+		return "", err
 	}
 	defer o.Close()
 
 	if err := GenerateHTML(o, doc, exportID); err != nil {
 		logCtx.WithError(err).Error("failed to generate html")
-		return err
+		return "", err
 	}
 
 	logCtx.Info("html file saved")
-	return nil
+	return output, nil
 }

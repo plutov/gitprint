@@ -30,10 +30,10 @@ Download repo contents flow:
 Pre Release TODO:
 - Logo, Favicon and OG Image
 - 3 top examples to download: Neovim...
+- per user download/generate rate limit
 
 Post Release TODO:
 - global IP rate limit
-- per user download/generate rate limit
 
 ## Additional information
 

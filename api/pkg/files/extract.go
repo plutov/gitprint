@@ -3,23 +3,18 @@ package files
 import (
 	"archive/tar"
 	"compress/gzip"
-	"crypto/rand"
-	"crypto/sha256"
-	"encoding/base64"
 	"fmt"
 	"io"
 	"os"
 	"path/filepath"
-	"strconv"
 	"strings"
-	"time"
 
 	"github.com/plutov/gitprint/api/pkg/log"
 )
 
 type ExtractAndFilterResult struct {
 	Files     int    `json:"files"`
-	outputDir string `json:"-"`
+	OutputDir string `json:"-"`
 	ExportID  string `json:"exportID"`
 }
 
@@ -46,9 +41,9 @@ func ExtractAndFilterFiles(path string) (*ExtractAndFilterResult, error) {
 	}
 	defer gzr.Close()
 
-	exportID := getRandomOutputDir()
+	exportID := GenerateExportID()
 	res := &ExtractAndFilterResult{
-		outputDir: GetExportDir(exportID),
+		OutputDir: GetExportDir(exportID),
 		ExportID:  exportID,
 	}
 
@@ -82,7 +77,7 @@ func ExtractAndFilterFiles(path string) (*ExtractAndFilterResult, error) {
 		if len(parts) > 0 {
 			header.Name = strings.Join(parts[1:], "/")
 		}
-		target := filepath.Join(res.outputDir, header.Name)
+		target := filepath.Join(res.OutputDir, header.Name)
 
 		// check the file type
 		switch header.Typeflag {
@@ -123,18 +118,4 @@ func ExtractAndFilterFiles(path string) (*ExtractAndFilterResult, error) {
 			res.Files++
 		}
 	}
-}
-
-func getRandomOutputDir() string {
-	timestamp := time.Now().UnixNano()
-
-	b := make([]byte, 32)
-	if _, err := rand.Read(b); err != nil {
-		log.WithError(err).Error("unable to generate random bytes")
-		return fmt.Sprintf("%x", sha256.Sum256([]byte(strconv.Itoa(int(timestamp)))))
-	}
-
-	salt := base64.URLEncoding.EncodeToString(b)
-
-	return fmt.Sprintf("%x", sha256.Sum256([]byte(salt+strconv.Itoa(int(timestamp)))))
 }

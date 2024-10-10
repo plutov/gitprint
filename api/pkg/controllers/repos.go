@@ -69,6 +69,9 @@ func (h *Handler) generate(c echo.Context) error {
 	}
 	owner, repo := req.GetOwnerAndRepo()
 	exportID := c.QueryParam("export_id")
+	if err := files.ValidateExportID(exportID); err != nil {
+		return response.BadRequest(c, err.Error())
+	}
 
 	user := c.Get("user").(*git.User)
 	ghClient := git.NewClient(user.AccessToken)
@@ -96,5 +99,15 @@ func (h *Handler) generate(c echo.Context) error {
 		return response.InternalError(c, "unable to generate a document")
 	}
 
-	return response.Ok(c, doc)
+	htmlOut, err := builder.GenerateAndSaveHTMLFile(doc, exportID)
+	if err != nil {
+		return response.InternalError(c, "unable to save html file")
+	}
+
+	_, err = builder.GenerateAndSavePDFFile(htmlOut, exportID)
+	if err != nil {
+		return response.InternalError(c, "unable to save pdf file")
+	}
+
+	return response.Ok(c, "ok")
 }
