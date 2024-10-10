@@ -21,5 +21,5 @@ make lint
 Deployment:
 
 ```
-docker-compose --file compose-prod.yaml up -d --build
+docker compose --file compose-prod.yaml up -d --build
 ```
