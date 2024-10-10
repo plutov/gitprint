@@ -17,3 +17,9 @@ Lint:
 ```
 make lint
 ```
+
+Deployment:
+
+```
+docker-compose --file compose-prod.yml up -d --build
+```
