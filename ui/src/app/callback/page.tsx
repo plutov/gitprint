@@ -13,7 +13,7 @@ export default function Callback() {
   // redirect to home if auth is not successful in 5s
   useEffect(() => {
     const timeout = setTimeout(() => {
-      window.location.href = "/";
+      // window.location.href = "/";
     }, 5000);
 
     return () => {

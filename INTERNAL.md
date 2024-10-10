@@ -2,8 +2,8 @@
 
 ## TODO
 
-- Logo, Favicon and OG Image
-- 3 top examples to download: Neovim...
+- top examples to download: Neovim... on CDN
+- Testing
 
 ## Additional information
 

@@ -29,13 +29,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body>
+      <body className="flex flex-col h-screen justify-between">
         <header className="flex h-16 w-full items-center justify-center border-b">
           <a rel="nofollow" href="/" className="font-bold p-8">
             gitprint.me - Print your favorite Git repositories as PDF.
           </a>
         </header>
-        <main className="flex flex-col">{children}</main>
+        <main className="flex flex-col mb-auto">{children}</main>
         <footer className="flex w-full items-center justify-center border-t">
           <div className="flex justify-center p-4 text-sm">
             <span className="mx-2">v0.1.0</span>
