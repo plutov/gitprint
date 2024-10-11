@@ -26,7 +26,7 @@ export default function Docs() {
           <div className="flex flex-col gap-2 rounded-md border p-8 mt-4">
             <h1 className="text-lg font-semibold">{">"} Known Issues</h1>
             <p>1. It may not work well on huge repositories.</p>
-            <p>2. No syntax highlighting.</p>
+            <p>2. No syntax highlighting, but supports Markdown.</p>
           </div>
         </div>
       </div>

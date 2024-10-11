@@ -9,7 +9,7 @@ export default function Home() {
         <div className="mx-auto max-w-2xl px-4">
           <div className="flex flex-col gap-2 rounded-md border p-8">
             <h1 className="text-lg font-semibold">
-              {">"} Welcome to gitprint.me
+              {">"} Print your favorite Git repositories as PDF
             </h1>
             <p className="py-2">
               Looking for a fun way to explore your favorite GitHub

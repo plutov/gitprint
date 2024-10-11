@@ -32,9 +32,17 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className="flex flex-col h-screen justify-between">
         <header className="flex h-16 w-full items-center justify-center border-b">
-          <a href="/" className="font-bold p-8">
-            gitprint.me - Print your favorite Git repositories as PDF.
-          </a>
+          <span className="mx-2">
+            <a href="/">home</a>
+          </span>
+          <span>•</span>
+          <span className="mx-2">
+            <a href="/docs">docs</a>
+          </span>
+          <span>•</span>
+          <span className="mx-2">
+            <a href="/contact">contact</a>
+          </span>
         </header>
         <main className="flex flex-col mb-auto">{children}</main>
         <footer className="flex w-full items-center justify-center border-t">
@@ -49,7 +57,6 @@ export default function RootLayout({
             </span>
             <span>•</span>
             <span className="mx-2">
-              {" "}
               <a href="/docs">How it works</a>
             </span>
           </div>
