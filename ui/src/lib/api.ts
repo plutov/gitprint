@@ -79,9 +79,14 @@ export async function getJWT(code: string, state: string) {
   );
 }
 
-export async function download(jwt: string, repo: string, ref: string) {
+export async function download(
+  jwt: string,
+  repo: string,
+  ref: string,
+  exclude: string,
+) {
   return await get(
-    `/private/github/repo/download?repo=${encodeURIComponent(repo)}&ref=${encodeURIComponent(ref)}`,
+    `/private/github/repo/download?repo=${encodeURIComponent(repo)}&ref=${encodeURIComponent(ref)}&exclude=${encodeURIComponent(exclude)}`,
     jwt,
   );
 }

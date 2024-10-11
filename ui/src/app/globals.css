@@ -17,6 +17,10 @@ a {
     @apply text-teal-500 hover:text-teal-600 bg-transparent border border-teal-500 hover:border-teal-600 font-semibold rounded-lg text-sm w-auto py-2 px-4 text-center;
 }
 
+.btn.inline {
+    @apply text-teal-500 hover:text-teal-600 bg-transparent border-none p-0;
+}
+
 .btn:disabled {
     @apply opacity-50 cursor-not-allowed hover:text-teal-500;
 }

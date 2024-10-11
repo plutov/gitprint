@@ -7,6 +7,7 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 
 	"github.com/plutov/gitprint/api/pkg/log"
@@ -18,7 +19,7 @@ type ExtractAndFilterResult struct {
 	ExportID  string `json:"exportID"`
 }
 
-func ExtractAndFilterFiles(path string) (*ExtractAndFilterResult, error) {
+func ExtractAndFilterFiles(path string, exclude string) (*ExtractAndFilterResult, error) {
 	logCtx := log.With("path", path)
 	logCtx.Info("extracting and filtering files")
 
@@ -46,6 +47,8 @@ func ExtractAndFilterFiles(path string) (*ExtractAndFilterResult, error) {
 		OutputDir: GetExportDir(exportID),
 		ExportID:  exportID,
 	}
+
+	excludePatterns := getExcludePatterns(exclude)
 
 	tr := tar.NewReader(gzr)
 	for {
@@ -78,6 +81,18 @@ func ExtractAndFilterFiles(path string) (*ExtractAndFilterResult, error) {
 			header.Name = strings.Join(parts[1:], "/")
 		}
 		target := filepath.Join(res.OutputDir, header.Name)
+
+		// exclude patterns
+		isExcluded := false
+		for _, pattern := range excludePatterns {
+			isExcluded, _ = regexp.MatchString(wildCardToRegexp(pattern), header.Name)
+			if isExcluded {
+				break
+			}
+		}
+		if isExcluded {
+			continue
+		}
 
 		// check the file type
 		switch header.Typeflag {
@@ -118,4 +133,37 @@ func ExtractAndFilterFiles(path string) (*ExtractAndFilterResult, error) {
 			res.Files++
 		}
 	}
+}
+
+func getExcludePatterns(exclude string) []string {
+	if exclude == "" {
+		return nil
+	}
+
+	parts := strings.Split(exclude, ",")
+	filtered := []string{}
+	for _, part := range parts {
+		part = strings.TrimSpace(part)
+		if part != "" {
+			filtered = append(filtered, part)
+		}
+	}
+
+	return filtered
+}
+
+func wildCardToRegexp(pattern string) string {
+	var result strings.Builder
+	for i, literal := range strings.Split(pattern, "*") {
+
+		// Replace * with .*
+		if i > 0 {
+			result.WriteString(".*")
+		}
+
+		// Quote any regular expression meta characters in the
+		// literal text.
+		result.WriteString(regexp.QuoteMeta(literal))
+	}
+	return result.String()
 }

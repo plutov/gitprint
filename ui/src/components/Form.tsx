@@ -18,6 +18,8 @@ export default function Form() {
   const [token, setToken] = useState<string | undefined>();
   const [repo, setRepo] = useState<string>("");
   const [ref, setRef] = useState<string>("");
+  const [advanced, openAdvanced] = useState<boolean>(false);
+  const [exclude, setExclude] = useState<string>("");
   const [exportId, setExportId] = useState<string>("");
   const [progress, setProgress] = useState<ProgressStatus>(ProgressStatus.None);
   const [log, setLog] = useState<Array<string>>([]);
@@ -44,7 +46,7 @@ export default function Form() {
     setProgress(ProgressStatus.Downloading);
     setLog(["Downloading repository files..."]);
 
-    const res = await download(token as string, repo, ref);
+    const res = await download(token as string, repo, ref, exclude);
     if (res.error) {
       setProgress(ProgressStatus.Error);
       setLog((log) => [...log, "ERROR: " + res.error]);
@@ -142,6 +144,40 @@ export default function Form() {
               />
             </div>
           </div>
+          <div className="mt-2">
+            <button
+              type="button"
+              className="btn inline"
+              onClick={() => openAdvanced(!advanced)}
+            >
+              Advanced Options
+            </button>
+          </div>
+          {advanced && (
+            <div className="mt-2">
+              <label htmlFor="exclude" className="block text-md text-white">
+                [Optional] Exclude
+              </label>
+              <label
+                htmlFor="exclude"
+                className="block caption text-sm text-gray-400"
+              >
+                Comma separated list of patterns to exclude.
+              </label>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  name="exclude"
+                  id="exclude"
+                  className="input"
+                  placeholder="tests/*,docs/*"
+                  required
+                  value={exclude}
+                  onChange={(e) => setExclude(e.target.value)}
+                />
+              </div>
+            </div>
+          )}
           <div className="mt-2">
             <button
               type="submit"

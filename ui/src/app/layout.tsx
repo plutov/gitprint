@@ -47,7 +47,7 @@ export default function RootLayout({
         <main className="flex flex-col mb-auto">{children}</main>
         <footer className="flex w-full items-center justify-center border-t">
           <div className="flex justify-center p-4 text-sm">
-            <span className="mx-2">v0.1.1</span>
+            <span className="mx-2">v0.1.2</span>
             <span>•</span>
             <span className="mx-2">
               Made by{" "}

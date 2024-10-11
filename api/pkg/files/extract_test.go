@@ -10,14 +10,15 @@ func TestExtractAndFilterFiles(t *testing.T) {
 		path     string
 		isNilErr bool
 		files    int
+		exclude  string
 	}{
-		{"notfound.tar.gz", false, 0},
-		{"./testdata/formulosity-0.1.5.tar.gz", true, 90},
+		{"notfound.tar.gz", false, 0, ""},
+		{"./testdata/formulosity-0.1.5.tar.gz", true, 86, "ui/src/styles/*"},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.path, func(t *testing.T) {
-			res, err := ExtractAndFilterFiles(tt.path)
+			res, err := ExtractAndFilterFiles(tt.path, tt.exclude)
 			if res != nil {
 				os.RemoveAll(res.OutputDir)
 			}

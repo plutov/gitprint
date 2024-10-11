@@ -15,8 +15,9 @@ import (
 )
 
 type repoRequest struct {
-	Repo string `query:"repo"`
-	Ref  string `query:"ref"`
+	Repo    string `query:"repo"`
+	Exclude string `query:"exclude"`
+	Ref     string `query:"ref"`
 }
 
 func (r *repoRequest) Validate() error {
@@ -62,7 +63,7 @@ func (h *Handler) downloadRepo(c echo.Context) error {
 		return response.InternalError(c, "unable to download repo")
 	}
 
-	extracted, err := files.ExtractAndFilterFiles(res.OutputFile)
+	extracted, err := files.ExtractAndFilterFiles(res.OutputFile, req.Exclude)
 	if err != nil {
 		return response.InternalError(c, "unable to extract and filter files")
 	}

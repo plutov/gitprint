@@ -11,7 +11,7 @@ import (
 func TestGenerateDocument(t *testing.T) {
 	os.Setenv("GITHUB_REPOS_DIR", "./testdata")
 
-	res, err := files.ExtractAndFilterFiles("./testdata/formulosity-0.1.5.tar.gz")
+	res, err := files.ExtractAndFilterFiles("./testdata/formulosity-0.1.5.tar.gz", "")
 	if err != nil {
 		t.Fatalf("ExtractAndFilterFiles failed: %v", err)
 	}

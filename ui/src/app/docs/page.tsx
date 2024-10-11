@@ -28,6 +28,11 @@ export default function Docs() {
             <p>1. It may not work well on huge repositories.</p>
             <p>2. No syntax highlighting, but supports Markdown.</p>
           </div>
+          <div className="flex flex-col gap-2 rounded-md border p-8 mt-4">
+            <h1 className="text-lg font-semibold">{">"} CHANGELOG</h1>
+            <p>2024-10-11: Parse Markdown files.</p>
+            <p>2024-10-11: Add exclude patterns.</p>
+          </div>
         </div>
       </div>
     </div>
