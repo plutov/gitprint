@@ -58,7 +58,7 @@ export default function Home() {
             </a>
             <a
               className="cursor-pointer rounded-md border p-4"
-              href={`${process.env.NEXT_PUBLIC_API_ADDR}/files?export_id=ea3a3990ee79da818aeea8db87ce64208bb3451d37a3dda071b27e3690178452&ext=pdf`}
+              href={`${process.env.NEXT_PUBLIC_API_ADDR}/files?export_id=6d0bdc0f9d43f1167e6bf1d4e8c68eb35b0f8f88d8cfce9f99028f57c0f24c8b&ext=pdf`}
             >
               <div className="text-sm font-semibold">binarly-io/efiXplorer</div>
               <div className="text-sm text-white">v6.0</div>
@@ -66,10 +66,10 @@ export default function Home() {
             </a>
             <a
               className="cursor-pointer rounded-md border p-4"
-              href={`${process.env.NEXT_PUBLIC_API_ADDR}/files?export_id=b8dc47617866dfe1888300ecb789d45e1b350447af77ad3b7c6aba7cf099fd0a&ext=pdf`}
+              href={`${process.env.NEXT_PUBLIC_API_ADDR}/files?export_id=5b8926f28a32abc09d21f5695574b99e3cd6831925c3626a12f66c19ee69babd&ext=pdf`}
             >
               <div className="text-sm font-semibold">redis/redis-vl-python</div>
-              <div className="text-sm text-white">v0.3.4</div>
+              <div className="text-sm text-white">0.3.4</div>
               <div className="text-sm text-zinc-600">2.5MB</div>
             </a>
           </div>

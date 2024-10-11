@@ -107,7 +107,8 @@ func ExtractAndFilterFiles(path string, exclude string) (*ExtractAndFilterResult
 				continue
 			}
 
-			if !IsAllowedFile(header.Name) {
+			fileName := filepath.Base(header.Name)
+			if !IsAllowedFile(fileName) {
 				continue
 			}
 
