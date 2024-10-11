@@ -17,6 +17,13 @@ export default function Docs() {
             </p>
           </div>
           <div className="flex flex-col gap-2 rounded-md border p-8 mt-4">
+            <h1 className="text-lg font-semibold">{">"} Limitations</h1>
+            <p>
+              Because it is a free service, there are some limitations: you can
+              generate only one PDF per hour.
+            </p>
+          </div>
+          <div className="flex flex-col gap-2 rounded-md border p-8 mt-4">
             <h1 className="text-lg font-semibold">{">"} Known Issues</h1>
             <p>1. It may not work well on huge repositories.</p>
             <p>2. No syntax highlighting.</p>
