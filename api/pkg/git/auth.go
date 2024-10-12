@@ -34,11 +34,7 @@ func NewAuth() *Auth {
 }
 
 func getOAuthConfig() *oauth2.Config {
-	redirectHost := os.Getenv("GITHUB_REDIRECT_HOST")
-	redirectURL := fmt.Sprintf("%s/callback", redirectHost)
-
 	return &oauth2.Config{
-		RedirectURL:  redirectURL,
 		ClientID:     os.Getenv("GITHUB_CLIENT_ID"),
 		ClientSecret: os.Getenv("GITHUB_CLIENT_SECRET"),
 		Scopes:       []string{"user:email", "repo"},
