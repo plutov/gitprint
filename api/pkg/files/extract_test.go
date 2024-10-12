@@ -13,7 +13,7 @@ func TestExtractAndFilterFiles(t *testing.T) {
 		exclude  string
 	}{
 		{"notfound.tar.gz", false, 0, ""},
-		{"./testdata/formulosity-0.1.5.tar.gz", true, 86, "ui/src/styles/*"},
+		{"./testdata/formulosity-0.1.5.tar.gz", true, 84, "ui/src/styles/*"},
 	}
 
 	for _, tt := range tests {

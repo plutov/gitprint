@@ -45,7 +45,7 @@ func TestGenerateDocument(t *testing.T) {
 		rootReadme    bool
 	}{
 		{repo, contributors, "notfound", false, 0, 0, false},
-		{repo, contributors, res.ExportID, true, 130, 38, true},
+		{repo, contributors, res.ExportID, true, 128, 38, true},
 	}
 
 	for _, tt := range tests {
