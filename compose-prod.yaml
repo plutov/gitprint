@@ -45,6 +45,7 @@ services:
       - ./conf/options-ssl-nginx.conf:/etc/letsencrypt/options-ssl-nginx.conf
       - ./conf/ssl-dhparams.pem:/etc/letsencrypt/ssl-dhparams.pem
       - ./data/certbot/www:/var/www/certbot
+      - ./data/letsencrypt:/etc/letsencrypt
     ports:
       - "80:80"
       - "443:443"
