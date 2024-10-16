@@ -16,5 +16,5 @@ registry:
 builder:
   arch: amd64
   args:
-    NEXT_PUBLIC_API_ADDR: https://api.gitprint.me
     NODE_ENV: production
+    NEXT_PUBLIC_API_ADDR: https://api.gitprint.me

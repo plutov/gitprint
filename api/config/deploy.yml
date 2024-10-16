@@ -13,25 +13,23 @@ registry:
   username: pliutau
   password:
     - KAMAL_REGISTRY_PASSWORD
-volumes:
-  - /root/data:/root/data:rw
+builder:
+  arch: amd64
 env:
   clear:
-    ENV: prod
+    ENV: local
     LOG_LEVEL: debug
+    GITHUB_CLIENT_ID: Ov23liZEEiOWoR3XtAnt
     GITHUB_REPOS_DIR: /root/data
     GOTENBERG_ADDR: http://gitprint-api-gotenberg:3000
-    GITHUB_CLIENT_ID: Ov23liZEEiOWoR3XtAnt
   secret:
     - JWT_SECRET
     - GITHUB_CLIENT_SECRET
-builder:
-  arch: amd64
+volumes:
+  - /root/data:/root/data:rw
 accessories:
   gotenberg:
     image: gotenberg/gotenberg:8
     roles:
       - web
     port: "3000:3000"
-    env:
-      DEFAULT_WAIT_TIMEOUT: "30"
