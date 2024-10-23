@@ -88,7 +88,6 @@ var (
 	blacklistPrefixes = []string{
 		// Everything that starts with a dot
 		".",
-		"_",
 	}
 )
 
