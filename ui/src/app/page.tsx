@@ -42,35 +42,19 @@ export default function Home() {
           <div className="mb-4 grid grid-cols-2 gap-2">
             <a
               className="cursor-pointer rounded-md border p-4"
-              href={`${process.env.NEXT_PUBLIC_API_ADDR}/files?export_id=ed6f6f9dbdc445653b1b9737367c25ea734a3b8ce5e86c88d4174e19c718650a&ext=pdf`}
+              href={`${process.env.NEXT_PUBLIC_API_ADDR}/files?export_id=fc6b4b70a97bb0d0d91773f443b472913a2ef34c623b670cc0e27326ceae70af&ext=pdf`}
             >
-              <div className="text-sm font-semibold">docker/scout-cli</div>
-              <div className="text-sm text-white">v1.14.0</div>
-              <div className="text-sm text-zinc-600">2.4MB</div>
+              <div className="text-sm font-semibold">plutov/practice-go</div>
+              <div className="text-sm text-white">-</div>
+              <div className="text-sm text-zinc-600">1.3MB</div>
             </a>
             <a
               className="cursor-pointer rounded-md border p-4"
-              href={`${process.env.NEXT_PUBLIC_API_ADDR}/files?export_id=4fe527c7ae65ac12fee5a0d33b70feeaa5b43f3fd02ae612a939a613689a9445&ext=pdf`}
+              href={`${process.env.NEXT_PUBLIC_API_ADDR}/files?export_id=513d3bd286092b38054ae373e3f6051309956284b7ac4bc0873bd3450271c825&ext=pdf`}
             >
-              <div className="text-sm font-semibold">astral-sh/ruff-lsp</div>
-              <div className="text-sm text-white">v0.0.57</div>
-              <div className="text-sm text-zinc-600">2.3MB</div>
-            </a>
-            <a
-              className="cursor-pointer rounded-md border p-4"
-              href={`${process.env.NEXT_PUBLIC_API_ADDR}/files?export_id=4808a2e810e5c640a2318a31d619e4fcf04b646c7146eaeac32d0cf8371a345f&ext=pdf`}
-            >
-              <div className="text-sm font-semibold">binarly-io/efiXplorer</div>
-              <div className="text-sm text-white">v6.0</div>
-              <div className="text-sm text-zinc-600">1MB</div>
-            </a>
-            <a
-              className="cursor-pointer rounded-md border p-4"
-              href={`${process.env.NEXT_PUBLIC_API_ADDR}/files?export_id=9924e3dcdcca1af6e78bc73a886d5d2d6f526f3d85dae064d8dbe6951ef964c9&ext=pdf`}
-            >
-              <div className="text-sm font-semibold">redis/redis-vl-python</div>
-              <div className="text-sm text-white">0.3.4</div>
-              <div className="text-sm text-zinc-600">2.5MB</div>
+              <div className="text-sm font-semibold">google/mangle</div>
+              <div className="text-sm text-white">v0.3.0</div>
+              <div className="text-sm text-zinc-600">2.1MB</div>
             </a>
           </div>
         </div>
