@@ -8,14 +8,12 @@ services:
     environment:
       - ENV=local
       - LOG_LEVEL=debug
-      - JWT_SECRET=${JWT_SECRET}
       - GITHUB_CLIENT_ID=${GITHUB_CLIENT_ID}
       - GITHUB_CLIENT_SECRET=${GITHUB_CLIENT_SECRET}
       - GITHUB_REPOS_DIR=/root/repos
       - GOTENBERG_ADDR=http://gotenberg:3000
     volumes:
       - ./api/repos:/root/repos
-
   ui:
     restart: always
     build:
@@ -25,7 +23,6 @@ services:
         - NEXT_PUBLIC_API_ADDR=http://localhost:9701
     ports:
       - "9702:3000"
-
   gotenberg:
     restart: always
     image: gotenberg/gotenberg:8

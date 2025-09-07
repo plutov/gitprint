@@ -1,5 +1,7 @@
 # gitprint
 
+## Local Development
+
 Run:
 
 ```
@@ -18,9 +20,17 @@ Lint:
 make lint
 ```
 
-Deploy:
+## Deployment
+
+1. Set environment variables in `.env` file:
 
 ```
-cd api
-kamal deploy
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+```
+
+2. Run:
+
+```
+docker-compose up --build -d
 ```

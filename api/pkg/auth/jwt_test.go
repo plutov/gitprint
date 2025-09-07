@@ -7,7 +7,6 @@ import (
 )
 
 func TestJWTClaims(t *testing.T) {
-	t.Setenv("JWT_SECRET", "buzzlightyear")
 	user := &git.User{
 		Username:    "1",
 		Email:       "2",

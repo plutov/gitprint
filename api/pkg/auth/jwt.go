@@ -1,18 +1,27 @@
 package auth
 
 import (
+	"crypto/sha512"
 	"errors"
 	"fmt"
-	"os"
 	"time"
 
 	jwt "github.com/golang-jwt/jwt/v4"
 	"github.com/plutov/gitprint/api/pkg/git"
 )
 
+var tempJwtSecret []byte
+
 type SessionClaims struct {
 	User *git.User `json:"user"`
 	jwt.StandardClaims
+}
+
+func init() {
+	var sha512 = sha512.New()
+	sha512.Write([]byte(fmt.Sprintf("gitprintme%d", time.Now().UnixNano())))
+
+	tempJwtSecret = sha512.Sum(nil)
 }
 
 func FillJWT(user *git.User) (string, error) {
@@ -25,7 +34,7 @@ func FillJWT(user *git.User) (string, error) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 
 	// Generate encoded token and send it as response
-	t, err := token.SignedString([]byte(os.Getenv("JWT_SECRET")))
+	t, err := token.SignedString(tempJwtSecret)
 	if err != nil {
 		return "", err
 	}
@@ -38,7 +47,7 @@ func ReadJWTClaims(jwtToken string) (*SessionClaims, error) {
 		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
 			return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
 		}
-		return []byte(os.Getenv("JWT_SECRET")), nil
+		return tempJwtSecret, nil
 	})
 	if err != nil {
 		return nil, err
