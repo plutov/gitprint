@@ -9,7 +9,6 @@ import (
 func TestJWTClaims(t *testing.T) {
 	user := &git.User{
 		Username:    "1",
-		Email:       "2",
 		AccessToken: "2",
 	}
 

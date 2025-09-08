@@ -41,7 +41,6 @@ func (c *Client) GetCurrentUser() (*User, error) {
 
 	return &User{
 		Username:    me.GetLogin(),
-		Email:       me.GetEmail(),
 		AccessToken: c.accessToken,
 	}, nil
 }

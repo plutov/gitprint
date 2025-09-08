@@ -21,7 +21,6 @@ type Auth struct {
 }
 
 type User struct {
-	Email       string `json:"email"`
 	Username    string `json:"username"`
 	AccessToken string `json:"access_token"`
 }
@@ -37,7 +36,7 @@ func getOAuthConfig() *oauth2.Config {
 	return &oauth2.Config{
 		ClientID:     os.Getenv("GITHUB_CLIENT_ID"),
 		ClientSecret: os.Getenv("GITHUB_CLIENT_SECRET"),
-		Scopes:       []string{"user:email", "repo"},
+		Scopes:       []string{"public_repo"},
 		Endpoint:     github.Endpoint,
 	}
 }

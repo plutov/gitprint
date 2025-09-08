@@ -106,7 +106,7 @@ export default function Form() {
               htmlFor="repository"
               className="block caption text-sm text-gray-400"
             >
-              Public or private repository that you have access to.
+              Must be a public GitHub repository.
             </label>
             <div className="mt-2">
               <input

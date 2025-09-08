@@ -17,8 +17,9 @@ export default function Home() {
               maybe want to print out a hard copy as a keepsake?
             </p>
             <p className="py-2">
-              Simply sign in with your GitHub account and start printing public
-              or private repositories in a beautiful, easy-to-read format.
+              Simply sign in with your GitHub account and start printing{" "}
+              <span className="text-white font-semibold">public</span>
+              repositories in a beautiful, easy-to-read format.
             </p>
             <p className="py-2">
               It is currently in beta, so please be patient with us as we work.
