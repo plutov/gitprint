@@ -18,7 +18,7 @@ export default function Home() {
             </p>
             <p className="py-2">
               Simply sign in with your GitHub account and start printing{" "}
-              <span className="text-white font-semibold">public</span>
+              <span className="text-white font-semibold">public</span>{" "}
               repositories in a beautiful, easy-to-read format.
             </p>
             <p className="py-2">
