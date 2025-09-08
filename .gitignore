@@ -1,4 +1,5 @@
 .DS_Store
 data
 api/repos
+api/main
 /.env
