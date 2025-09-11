@@ -43,6 +43,10 @@ export default function RootLayout({
             <span className="mx-2">
               <a href="/contact">contact</a>
             </span>
+            <span>•</span>
+            <span className="mx-2">
+              <a href="https://github.com/plutov/gitprint">github</a>
+            </span>
           </div>
         </header>
         <main className="flex flex-col mb-auto">{children}</main>
