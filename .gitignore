@@ -3,3 +3,5 @@ data
 api/repos
 api/main
 /.env
+node_modules
+dist

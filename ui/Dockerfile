@@ -2,31 +2,23 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-RUN apk add --no-cache libc6-compat
 COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
 
-ARG NEXT_PUBLIC_API_ADDR
-ARG NEXT_PUBLIC_ANALYTICS_ENABLED
-ARG NODE_ENV
+ARG VITE_API_ADDR
+ARG VITE_ANALYTICS_ENABLED
 
-ENV NODE_ENV=${NODE_ENV}
-ENV NEXT_PUBLIC_API_ADDR=${NEXT_PUBLIC_API_ADDR}
-ENV NEXT_PUBLIC_ANALYTICS_ENABLED=${NEXT_PUBLIC_ANALYTICS_ENABLED}
+ENV VITE_API_ADDR=${VITE_API_ADDR}
+ENV VITE_ANALYTICS_ENABLED=${VITE_ANALYTICS_ENABLED}
 
 RUN npm run build
 
-FROM node:20-alpine AS runner
+FROM nginx:alpine
 
-WORKDIR /app
+COPY --from=builder /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-RUN mkdir .next
+EXPOSE 5173
 
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
-COPY --from=builder /app/public ./public
-
-EXPOSE 3000
-
-CMD ["node", "server.js"]
+CMD ["nginx", "-g", "daemon off;"]

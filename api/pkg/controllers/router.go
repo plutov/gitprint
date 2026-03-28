@@ -22,7 +22,7 @@ func NewRouter(h *Handler) *echo.Echo {
 	e.GET("/github/auth/url", h.githubURL)
 	e.GET("/github/auth/callback", h.githubCallback)
 	e.GET("/files", h.downloadExportFile)
-	e.GET("/repos/recent", h.getRecentRepos)
+	e.GET("/repos/popular", h.getPopularRepos)
 
 	// restricted endpoints
 	private := e.Group("/private")

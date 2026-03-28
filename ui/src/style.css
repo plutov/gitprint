@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+body {
+  background-color: #00091d;
+  background-image:
+    radial-gradient(ellipse 130% 55% at 50% 0%, rgba(20, 184, 166, 0.14) 0%, transparent 65%),
+    linear-gradient(rgba(20, 184, 166, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 184, 166, 0.055) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    40px 40px,
+    40px 40px;
+  background-attachment: fixed;
+  color: #ededed;
+  font-size: 16px;
+  font-family: monospace;
+}
+
+a {
+  @apply text-teal-400 hover:text-teal-300 transition-colors;
+}
+
+.btn {
+  @apply text-teal-400 hover:text-teal-300 bg-transparent border border-teal-700 hover:border-teal-500 font-semibold rounded-lg text-sm w-auto py-2 px-4 text-center transition-all;
+}
+
+.btn:hover:not(:disabled) {
+  box-shadow: 0 0 14px rgba(20, 184, 166, 0.25);
+}
+
+.btn.inline {
+  @apply text-teal-400 hover:text-teal-300 bg-transparent border-none p-0 shadow-none;
+}
+
+.btn:disabled {
+  @apply opacity-40 cursor-not-allowed;
+}
+
+.input {
+  @apply w-full rounded-md bg-transparent p-2 border border-gray-700 text-white text-sm transition-colors;
+}
+
+.input:focus {
+  outline: none;
+  border-color: rgba(20, 184, 166, 0.6);
+  box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.12);
+}
+
+.card {
+  @apply flex flex-col gap-2 rounded-md border border-gray-800 p-8 transition-all;
+  background: rgba(0, 9, 29, 0.5);
+}
+
+.card:hover {
+  border-color: rgba(20, 184, 166, 0.25);
+  box-shadow:
+    0 0 24px rgba(20, 184, 166, 0.06),
+    inset 0 1px 0 rgba(20, 184, 166, 0.05);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

@@ -9,7 +9,6 @@ export function parseJwt(token: string): JWTClaims | undefined {
   const base64 = base64Url.replace("-", "+").replace("_", "/");
   const jwt = JSON.parse(window.atob(base64)) as JWTClaims;
 
-  // return undefined if token is expired
   if (jwt.exp && jwt.exp * 1000 < Date.UTC(Date.now())) {
     return undefined;
   }

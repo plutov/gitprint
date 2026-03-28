@@ -2,6 +2,7 @@ package main
 
 import (
 	"os"
+	"path/filepath"
 
 	controllers "github.com/plutov/gitprint/api/pkg/controllers"
 	"github.com/plutov/gitprint/api/pkg/log"
@@ -15,6 +16,13 @@ func main() {
 		logLevel = os.Getenv("LOG_LEVEL")
 	}
 	log.SetLogLevel(logLevel)
+
+	reposDir := os.Getenv("GITHUB_REPOS_DIR")
+	if entries, err := os.ReadDir(reposDir); err == nil {
+		for _, entry := range entries {
+			os.RemoveAll(filepath.Join(reposDir, entry.Name()))
+		}
+	}
 
 	svc, err := services.InitServices()
 	if err != nil {

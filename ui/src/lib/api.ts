@@ -4,7 +4,7 @@ export async function call(path: string, init?: RequestInit) {
       init["cache"] = "no-store";
     }
 
-    const host = process.env.NEXT_PUBLIC_API_ADDR;
+    const host = import.meta.env.VITE_API_ADDR;
 
     console.log("calling", `${host}${path}`);
     const res = await fetch(`${host}${path}`, init);
@@ -42,26 +42,9 @@ export async function call(path: string, init?: RequestInit) {
   }
 }
 
-export async function post(path: string, payload: object, jwt?: string) {
-  const headers = {
-    "Content-Type": "application/json",
-    Authorization: "",
-  };
-  if (jwt) {
-    headers["Authorization"] = `Bearer ${jwt}`;
-  }
-
-  return call(path, {
-    method: "POST",
-    body: JSON.stringify(payload),
-    headers: headers,
-  });
-}
-
 export async function get(path: string, jwt?: string) {
-  const headers = {
+  const headers: Record<string, string> = {
     "Content-Type": "application/json",
-    Authorization: "",
   };
   if (jwt) {
     headers["Authorization"] = `Bearer ${jwt}`;
@@ -79,30 +62,20 @@ export async function getJWT(code: string, state: string) {
   );
 }
 
-export async function download(
-  jwt: string,
-  repo: string,
-  ref: string,
-  exclude: string,
-) {
+export async function download(jwt: string, repo: string, ref: string, exclude: string) {
   return await get(
     `/private/github/repo/download?repo=${encodeURIComponent(repo)}&ref=${encodeURIComponent(ref)}&exclude=${encodeURIComponent(exclude)}`,
     jwt,
   );
 }
 
-export async function generate(
-  jwt: string,
-  repo: string,
-  ref: string,
-  exportId: string,
-) {
+export async function generate(jwt: string, repo: string, ref: string, exportId: string) {
   return await get(
     `/private/github/repo/generate?repo=${encodeURIComponent(repo)}&ref=${encodeURIComponent(ref)}&export_id=${encodeURIComponent(exportId)}`,
     jwt,
   );
 }
 
-export async function getRecentRepos() {
-  return await get("/repos/recent");
+export async function getPopularRepos() {
+  return await get("/repos/popular");
 }

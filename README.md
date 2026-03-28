@@ -11,7 +11,7 @@ Sign in with GitHub, paste a repo URL, get a clean PDF — useful for reading co
 ## Stack
 
 - **Go** + [Echo](https://echo.labstack.com) — API server
-- **Next.js** + TypeScript + Tailwind CSS — frontend
+- **Vue.js** + Tailwind CSS — frontend
 - **Gotenberg** — PDF rendering
 - **Docker Compose** — orchestration
 
@@ -21,18 +21,4 @@ Sign in with GitHub, paste a repo URL, get a clean PDF — useful for reading co
 ```
 cp .env.example .env
 docker-compose up --build -d
-```
-
-## Development
-
-```
-make run
-```
-
-```
-make test
-```
-
-```
-make lint
 ```
